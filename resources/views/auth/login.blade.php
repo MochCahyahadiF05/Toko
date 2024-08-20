@@ -4,25 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Log in</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-
-    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css?v=3.2.0">
+    @include('layouts.template.cssLink')
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
-        </div>
 
-        <div class="card">
-            <div class="card-body login-card-body">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+            </div>
+            <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="../../index3.html" method="post">
+                <form action="{{route('login')}}" method="post">
+                    @csrf
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -55,8 +49,7 @@
 
                     </div>
                 </form>
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
+                <div class="social-auth-links text-center mt-2 mb-3">
                     <a href="#" class="btn btn-block btn-primary">
                         <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
                     </a>
@@ -74,13 +67,9 @@
             </div>
 
         </div>
+
     </div>
 
-
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
+    @include('layouts.template.script')
 </body>
 </html>
