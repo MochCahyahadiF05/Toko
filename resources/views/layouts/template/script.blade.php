@@ -22,6 +22,7 @@
 <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script> --}}
 <!-- Summernote -->
 <script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
@@ -31,7 +32,40 @@
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{asset('assets/dist/js/demo.js')}}"></script> --}}
 
-{{-- file login --}}
-<script src="{{asset('assets/dist/js/adminlte.min.js?v=3.2.0')}}"></script>
+{{-- fontawesome kit --}}
+<script src="https://kit.fontawesome.com/80f227685e.js" crossorigin="anonymous"></script>
 
 {{-- file login --}}
+{{-- <script src="{{asset('assets/dist/js/adminlte.min.js?v=3.2.0')}}"></script> --}}
+{{-- file login --}}
+
+{{-- fitur search data table --}}
+<script>
+  // Fitur Search
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    var input = this.value.toLowerCase();
+    var rows = document.querySelectorAll('#dataTable tr');
+    var found = false;
+
+    rows.forEach(function(row) {
+        // Cek jika ini bukan baris 'no data'
+        if (row.id !== 'noDataRow') {
+            var text = row.textContent.toLowerCase();
+            if (text.indexOf(input) > -1) {
+                row.style.display = '';
+                found = true;
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    });
+
+    // Tampilkan baris "Data yang Anda cari tidak ada" jika tidak ada data yang ditemukan
+    if (!found) {
+        document.getElementById('noDataRow').style.display = '';
+    } else {
+        document.getElementById('noDataRow').style.display = 'none';
+    }
+});
+</script>
+{{-- /fitur search data table --}}
