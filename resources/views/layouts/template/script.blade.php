@@ -39,6 +39,10 @@
 {{-- <script src="{{asset('assets/dist/js/adminlte.min.js?v=3.2.0')}}"></script> --}}
 {{-- file login --}}
 
+{{-- sweatalert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- sweatalert --}}
+
 {{-- fitur search data table --}}
 <script>
   // Fitur Search

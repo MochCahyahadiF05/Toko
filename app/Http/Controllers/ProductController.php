@@ -31,11 +31,11 @@ class ProductController extends Controller
     {
         
         $validated = $request->validate([
-            'nama_barang' => 'required',
+            'nama_barang' => 'required|string|max:255',
             'jenis_satuan' => 'required',
-            'stok' => 'required',
-            'harga_jual' => 'required',
-            'harga_beli' => 'required'
+            'stok' => 'required|numeric|min:1',
+            'harga_jual' => 'required|numeric|min:1',
+            'harga_beli' => 'required|numeric|min:1'
         ]);
 
         $produk = new Product();
@@ -46,7 +46,7 @@ class ProductController extends Controller
         $produk->harga_beli = $request->harga_beli; 
         $produk->save();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -71,11 +71,11 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'nama_barang' => 'required',
+            'nama_barang' => 'required|string|max:255',
             'jenis_satuan' => 'required',
-            'stok' => 'required',
-            'harga_jual' => 'required',
-            'harga_beli' => 'required'
+            'stok' => 'required|numeric|min:1',
+            'harga_jual' => 'required|numeric|min:1',
+            'harga_beli' => 'required|numeric|min:1'
         ]);
 
         $produk = Product::findOrFail($id);
@@ -86,7 +86,7 @@ class ProductController extends Controller
         $produk->harga_beli = $request->harga_beli; 
         $produk->save();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Data berhasil diedit!');
     }
 
     /**
@@ -96,6 +96,7 @@ class ProductController extends Controller
     {
         $produk = Product::findOrFail($id);
         $produk->delete();
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')
+                        ->with('success', 'Data berhasil dihapus!');
     }
 }

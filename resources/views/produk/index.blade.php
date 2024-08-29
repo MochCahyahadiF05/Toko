@@ -8,7 +8,7 @@
                 <div class="ml-auto">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#addDataProduct">Tambah Data</button>
                     @include('produk.create')
-                    
+
                 </div>
             </div>
             <div class="card-body">
@@ -39,12 +39,13 @@
                             <td>{{$item->harga_jual}}</td>
                             <td>{{$item->harga_beli}}</td>
                             <td>
-                                <form action="{{route('product.destroy',$item->id)}}" method="post">
+                                <form id="deleteForm{{ $item->id }}" action="{{ route('product.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editDataProduct-{{$item->id}}"><i class="fa-solid fa-pen-to-square"></i></button> |
-                                    {{-- <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa-solid fa-trash-can"></i></button> --}}
-                                    <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'> 
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editDataProduct-{{$item->id}}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button> |
+                                    <button type="button" class="deleteButton btn btn-danger" data-id="{{ $item->id }}" data-toggle="tooltip" title='Delete'>
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
@@ -56,10 +57,11 @@
                             <td colspan="7" class="text-center">Data yang Anda cari tidak ada</td>
                         </tr>
                     </tbody>
-                    
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+@include('layouts.template.sweatalert')
 @endsection
