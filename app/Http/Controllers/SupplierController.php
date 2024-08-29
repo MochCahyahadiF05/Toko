@@ -33,14 +33,17 @@ class SupplierController extends Controller
         $validated = $request->validate([
             'nama_supplier' => 'required|string|max:255'
         ]);
-
-        $supplier = new Supplier();
-        $supplier->nama_supplier = $request->nama_supplier;
-        $supplier->kontak_supplier = $request->kontak_supplier;
-        $supplier->alamat = $request->alamat;
-        $supplier->save();
-
-        return redirect()->route('supplier.index')->with('success', 'Data berhasil ditambahkan!');
+        try {
+            $supplier = new Supplier();
+            $supplier->nama_supplier = $request->nama_supplier;
+            $supplier->kontak_supplier = $request->kontak_supplier;
+            $supplier->alamat = $request->alamat;
+            $supplier->save();
+    
+            return redirect()->route('supplier.index')->with('success', 'Data berhasil ditambahkan!');
+        } catch (\Throwable $th) {
+            return redirect()->route('supplier.index')->with('error', 'Terjadi kesalahan saat Menambah data!');
+        }
     
     }
 
@@ -77,7 +80,7 @@ class SupplierController extends Controller
     
             return redirect()->route('supplier.index')->with('success', 'Data berhasil diedit!');
         } catch (\Throwable $th) {
-            return redirect()->route('your.route')->with('error', 'Terjadi kesalahan saat menambahkan data!');
+            return redirect()->route('supplier.index')->with('error', 'Terjadi kesalahan saat Mengedit data!');
         }
     
     }

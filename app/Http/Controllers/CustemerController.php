@@ -33,14 +33,18 @@ class CustemerController extends Controller
         $validated = $request->validate([
             'nama_customer' => 'required|string|max:255'
         ]);
-
-        $custemer = new Custemer();
-        $custemer->nama_customer = $request->nama_customer;
-        $custemer->no_telp = $request->no_telp;
-        $custemer->alamat = $request->alamat;
-        $custemer->save();
-
-        return redirect()->route('custemer.index')->with('success', 'Data berhasil ditambahkan!');
+        try {
+            $custemer = new Custemer();
+            $custemer->nama_customer = $request->nama_customer;
+            $custemer->no_telp = $request->no_telp;
+            $custemer->alamat = $request->alamat;
+            $custemer->save();
+    
+            return redirect()->route('custemer.index')->with('success', 'Data berhasil ditambahkan!');
+        } catch (\Throwable $th) {
+            return redirect()->route('custemer.index')->with('error', 'Terjadi kesalahan saat Menambahkan data!');
+            //throw $th;
+        }
     }
 
     /**
@@ -67,14 +71,17 @@ class CustemerController extends Controller
         $validated = $request->validate([
             'nama_customer' => 'required|string|max:255'
         ]);
-
-        $custemer = Custemer::findOrFail($id);
-        $custemer->nama_customer = $request->nama_customer;
-        $custemer->no_telp = $request->no_telp;
-        $custemer->alamat = $request->alamat;
-        $custemer->save();
-
-        return redirect()->route('custemer.index')->with('success', 'Data berhasil diedit!');
+        try {
+            $custemer = Custemer::findOrFail($id);
+            $custemer->nama_customer = $request->nama_customer;
+            $custemer->no_telp = $request->no_telp;
+            $custemer->alamat = $request->alamat;
+            $custemer->save();
+    
+            return redirect()->route('custemer.index')->with('success', 'Data berhasil diedit!');
+        } catch (\Throwable $th) {
+            return redirect()->route('custemer.index')->with('error', 'Terjadi kesalahan saat Mengedit data!');
+        }
     }
 
     /**

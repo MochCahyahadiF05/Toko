@@ -37,16 +37,20 @@ class ProductController extends Controller
             'harga_jual' => 'required|numeric|min:1',
             'harga_beli' => 'required|numeric|min:1'
         ]);
+        try {
+            $produk = new Product();
+            $produk->nama_barang = $request->nama_barang; 
+            $produk->jenis_satuan = $request->jenis_satuan; 
+            $produk->stok = $request->stok; 
+            $produk->harga_jual = $request->harga_jual; 
+            $produk->harga_beli = $request->harga_beli; 
+            $produk->save();
+            return redirect()->route('product.index')->with('success', 'Data berhasil ditambahkan!');
+        } catch (\Throwable $th) {
+            return redirect()->route('product.index')->with('error', 'Terjadi kesalahan saat Menambah data!');
 
-        $produk = new Product();
-        $produk->nama_barang = $request->nama_barang; 
-        $produk->jenis_satuan = $request->jenis_satuan; 
-        $produk->stok = $request->stok; 
-        $produk->harga_jual = $request->harga_jual; 
-        $produk->harga_beli = $request->harga_beli; 
-        $produk->save();
+        }
 
-        return redirect()->route('product.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -77,16 +81,19 @@ class ProductController extends Controller
             'harga_jual' => 'required|numeric|min:1',
             'harga_beli' => 'required|numeric|min:1'
         ]);
-
-        $produk = Product::findOrFail($id);
-        $produk->nama_barang = $request->nama_barang; 
-        $produk->jenis_satuan = $request->jenis_satuan; 
-        $produk->stok = $request->stok; 
-        $produk->harga_jual = $request->harga_jual; 
-        $produk->harga_beli = $request->harga_beli; 
-        $produk->save();
-
-        return redirect()->route('product.index')->with('success', 'Data berhasil diedit!');
+        try {
+            $produk = Product::findOrFail($id);
+            $produk->nama_barang = $request->nama_barang; 
+            $produk->jenis_satuan = $request->jenis_satuan; 
+            $produk->stok = $request->stok; 
+            $produk->harga_jual = $request->harga_jual; 
+            $produk->harga_beli = $request->harga_beli; 
+            $produk->save();
+    
+            return redirect()->route('product.index')->with('success', 'Data berhasil diedit!');
+        } catch (\Throwable $th) {
+            return redirect()->route('product.index')->with('error', 'Terjadi kesalahan saat Mengedit data!');
+        }
     }
 
     /**
