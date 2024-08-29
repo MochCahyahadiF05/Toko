@@ -3,11 +3,43 @@
 @if(session('success'))
 <script>
     Swal.fire({
-        title: 'Sukses!',
-        text: "{{ session('success') }}",
-        icon: 'success',
-        confirmButtonText: 'Oke'
+        title: 'Sukses!'
+        , text: "{{ session('success') }}"
+        , icon: 'success'
+        , confirmButtonText: 'Oke'
     });
+
+</script>
+@endif
+@if(session('error'))
+<script>
+    Swal.fire({
+        title: 'Error!'
+        , text: "{{ session('error') }}"
+        , icon: 'error'
+        , confirmButtonText: 'Oke'
+    });
+
+</script>
+@endif
+
+@if ($errors->any())
+<script>
+    Swal.fire({
+        title: 'Error!'
+        , html: `
+            <center>
+                <ul style="text-align: left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </center>
+        `
+        , icon: 'error'
+        , confirmButtonText: 'Oke'
+    });
+
 </script>
 @endif
 
@@ -36,4 +68,5 @@
             });
         });
     });
+
 </script>

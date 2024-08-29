@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustemerController;
+use App\Http\Controllers\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,8 @@ Route::get('/custemer',[CustemerController::class,'index'])->name('custemer.inde
 Route::post('/custemer/store',[CustemerController::class,'store'])->name('custemer.store');
 Route::put('/custemer/update/{id}',[CustemerController::class,'update'])->name('custemer.update');
 Route::delete('/custemer/destroy/{id}',[CustemerController::class,'destroy'])->name('custemer.destroy');
+
+Route::get('/supplier',[SupplierController::class,'index'])->name('supplier.index');
+Route::post('/supplier/store',[SupplierController::class,'store'])->name('supplier.store');
+Route::put('/supplier/update/{id}',[SupplierController::class,'update'])->name('supplier.update');
+Route::delete('/supplier/destroy/{id}',[SupplierController::class,'destroy'])->name('supplier.destroy');
