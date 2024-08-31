@@ -106,4 +106,11 @@ class ProductController extends Controller
         return redirect()->route('product.index')
                         ->with('success', 'Data berhasil dihapus!');
     }
+
+    public function showByJenisSatuan($jenis_satuan)
+    {
+        $product = Product::where('jenis_satuan', $jenis_satuan)->get();
+
+        return view('produk.index', compact('product', 'jenis_satuan'));
+    }
 }

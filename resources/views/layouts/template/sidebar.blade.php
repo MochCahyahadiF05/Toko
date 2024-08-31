@@ -75,23 +75,41 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fa-solid fa-boxes-stacked"></i>
                         <p>
-                            Layout Options
+                            Product
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation</p>
+                            <a href="{{route('product.index')}}" class="nav-link">
+                              <i class="nav-icon fa-solid fa-box"></i>
+                                <p>
+                                    Semua Product
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('produk.jenis_satuan', 'Kg')}}" class="nav-link">
+                              <i class="nav-icon fa-solid fa-box"></i>
+                                <p>
+                                    Product PerKG
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('produk.jenis_satuan', 'Tabung')}}" class="nav-link">
+                              <i class="nav-icon fa-solid fa-box"></i>
+                                <p>
+                                    Product PerTabung
+                                </p>
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

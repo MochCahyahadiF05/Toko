@@ -24,6 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //strat
 Route::get('/product',[ProductController::class,'index'])->name('product.index');
+Route::get('/produk/{jenis_satuan}', [ProductController::class, 'showByJenisSatuan'])->name('produk.jenis_satuan');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::put('/product/update/{id}',[ProductController::class,'update'])->name('product.update');
 Route::delete('/product/destroy/{id}',[ProductController::class,'destroy'])->name('product.destroy');
