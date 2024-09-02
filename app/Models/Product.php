@@ -14,7 +14,12 @@ class Product extends Model
         'jenis_satuan',
         'stok',
         'harga_jual',
-        'harga_beli'
+        'harga_beli',
     ];
     protected $timetamps = true;
+    public function sales()
+    {
+        return $this->hasMany(Sales::class, 'product_id');
+    }
+
 }

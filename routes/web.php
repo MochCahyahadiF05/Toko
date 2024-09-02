@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustemerController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SalesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,6 @@ Route::get('/supplier',[SupplierController::class,'index'])->name('supplier.inde
 Route::post('/supplier/store',[SupplierController::class,'store'])->name('supplier.store');
 Route::put('/supplier/update/{id}',[SupplierController::class,'update'])->name('supplier.update');
 Route::delete('/supplier/destroy/{id}',[SupplierController::class,'destroy'])->name('supplier.destroy');
+
+Route::get('/transaksi',[SalesController::class,'index'])->name('sales.index');
+Route::post('/transaksi/store',[SalesController::class,'store'])->name('sales.store');

@@ -52,30 +52,6 @@
                     </ul>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="{{route('product.index')}}" class="nav-link">
-                      <i class="nav-icon fa-solid fa-box"></i>
-                        <p>
-                            Barang
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('custemer.index')}}" class="nav-link">
-                        <i class="nav-icon fa-solid fa-users"></i>
-                        <p>
-                            Customer
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('supplier.index')}}" class="nav-link">
-                        <i class="nav-icon fa-solid fa-users"></i>
-                        <p>
-                            Supplier
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-boxes-stacked"></i>
                         <p>
@@ -110,6 +86,45 @@
                         </li>
                     </ul>
                 </li>
+                
+                <li class="nav-item">
+                    <a href="{{route('custemer.index')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-users"></i>
+                        <p>
+                            Customer
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('supplier.index')}}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-users"></i>
+                        <p>
+                            Supplier
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-money-bill-transfer"></i>
+                        <p>
+                            Transaksi
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('sales.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Input Transaksi
+                                </p>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
